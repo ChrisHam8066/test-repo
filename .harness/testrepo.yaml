@@ -1,0 +1,32 @@
+pipeline:
+  name: testpipe-line for movement
+  identifier: testpipeline_for_movement
+  projectIdentifier: test_project_gitexp_project_copytest
+  orgIdentifier: EngOps
+  tags: {}
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: teset
+                  identifier: teset
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: false
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - _project_all_users
+                    approverInputs: []
+        tags: {}
